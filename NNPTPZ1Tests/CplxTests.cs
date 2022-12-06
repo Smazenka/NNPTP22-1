@@ -1,11 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NNPTPZ1.Mathematics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NNPTPZ1;
 
 namespace NNPTPZ1.Mathematics.Tests
 {
@@ -16,19 +9,19 @@ namespace NNPTPZ1.Mathematics.Tests
         [TestMethod()]
         public void AddTest()
         {
-            Cplx a = new Cplx()
+            ComplexNumbers a = new ComplexNumbers()
             {
                 Re = 10,
                 Imaginari = 20
             };
-            Cplx b = new Cplx()
+            ComplexNumbers b = new ComplexNumbers()
             {
                 Re = 1,
                 Imaginari = 2
             };
 
-            Cplx actual = a.Add(b);
-            Cplx shouldBe = new Cplx()
+            ComplexNumbers actual = a.Add(b);
+            ComplexNumbers shouldBe = new ComplexNumbers()
             {
                 Re = 11,
                 Imaginari = 22
@@ -43,13 +36,13 @@ namespace NNPTPZ1.Mathematics.Tests
             r2 = b.ToString();
             Assert.AreEqual(e2, r2);
 
-            a = new Cplx()
+            a = new ComplexNumbers()
             {
                 Re = 1,
                 Imaginari = -1
             };
-            b = new Cplx() { Re = 0, Imaginari = 0 };
-            shouldBe = new Cplx() { Re = 1, Imaginari = -1 };
+            b = new ComplexNumbers() { Re = 0, Imaginari = 0 };
+            shouldBe = new ComplexNumbers() { Re = 1, Imaginari = -1 };
             actual = a.Add(b);
             Assert.AreEqual(shouldBe, actual);
 
@@ -65,18 +58,18 @@ namespace NNPTPZ1.Mathematics.Tests
         [TestMethod()]
         public void AddTestPolynome()
         {
-            Poly poly = new Mathematics.Poly();
-            poly.Coe.Add(new Cplx() { Re = 1, Imaginari = 0 });
-            poly.Coe.Add(new Cplx() { Re = 0, Imaginari = 0 });
-            poly.Coe.Add(new Cplx() { Re = 1, Imaginari = 0 });
-            Cplx result = poly.Eval(new Cplx() { Re = 0, Imaginari = 0 });
-            var expected = new Cplx() { Re = 1, Imaginari = 0 };
+            Polynomial poly = new Mathematics.Polynomial();
+            poly.Coe.Add(new ComplexNumbers() { Re = 1, Imaginari = 0 });
+            poly.Coe.Add(new ComplexNumbers() { Re = 0, Imaginari = 0 });
+            poly.Coe.Add(new ComplexNumbers() { Re = 1, Imaginari = 0 });
+            ComplexNumbers result = poly.Eval(new ComplexNumbers() { Re = 0, Imaginari = 0 });
+            var expected = new ComplexNumbers() { Re = 1, Imaginari = 0 };
             Assert.AreEqual(expected, result);
-            result = poly.Eval(new Cplx() { Re = 1, Imaginari = 0 });
-            expected = new Cplx() { Re = 2, Imaginari = 0 };
+            result = poly.Eval(new ComplexNumbers() { Re = 1, Imaginari = 0 });
+            expected = new ComplexNumbers() { Re = 2, Imaginari = 0 };
             Assert.AreEqual(expected, result);
-            result = poly.Eval(new Cplx() { Re = 2, Imaginari = 0 });
-            expected = new Cplx() { Re = 5.0000000000, Imaginari = 0 };
+            result = poly.Eval(new ComplexNumbers() { Re = 2, Imaginari = 0 });
+            expected = new ComplexNumbers() { Re = 5.0000000000, Imaginari = 0 };
             Assert.AreEqual(expected, result);
 
             var r2 = poly.ToString();
